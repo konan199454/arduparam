@@ -78,6 +78,29 @@ nav svg{width:24px;height:24px}
 .toast.ok{border-color:var(--ok)}.toast.warn{border-color:var(--warn)}.toast.err{border-color:var(--err)}
 .help{font-size:14px;line-height:1.5;color:var(--mut)}
 #usbBtn[hidden]{display:none}
+/* опис параметра */
+.esheet{overflow:hidden;padding-bottom:0}
+.esheet.show{display:flex;flex-direction:column}
+.escroll{overflow:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.ebar{border-top:1px solid var(--line);padding:12px 0 calc(14px + env(safe-area-inset-bottom));background:var(--card)}
+.ebar .btns{margin-top:10px}
+.dn{font-size:15px;margin:2px 0 8px}
+.desc{font-size:13px;line-height:1.5;color:var(--mut);margin:6px 0 12px}
+.chip{display:inline-block;font-size:12px;padding:3px 8px;border-radius:6px;background:var(--card2);color:var(--mut);margin:0 4px 4px 0}
+.chip.warn{background:#3a2a10;color:var(--warn)}
+.opts{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.opt{display:flex;gap:12px;align-items:center;padding:12px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14px}
+.opt:last-child{border-bottom:0}
+.opt:active{background:var(--card2)}
+.opt .c{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--mut);min-width:40px;text-align:right;flex:none}
+.opt.sel{background:rgba(59,158,255,.16)}
+.opt.sel .c{color:var(--acc)}
+.opt input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--acc)}
+.unit{font-size:13px;color:var(--mut);white-space:nowrap}
+.unit:empty{display:none}
+.p .n small{display:block;font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--mut);margin-top:3px}
+.p .v{max-width:48%;overflow:hidden;text-overflow:ellipsis;text-align:right}
+.p .v small{font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--mut)}
 /* splash */
 #splash{position:fixed;inset:0;z-index:30;background:#02080a;overflow:hidden;transition:opacity .35s}
 #splash.off{opacity:0;pointer-events:none}
@@ -166,14 +189,22 @@ nav svg{width:24px;height:24px}
 
 <div id="back"></div>
 
-<div class="sheet" id="editSheet">
-  <h2 id="eName"></h2>
-  <div class="sub" id="eSub"></div>
-  <div class="row">
-    <button id="eNeg" title="Змінити знак">±</button>
-    <input type="text" id="eVal" inputmode="decimal" autocomplete="off" spellcheck="false">
+<div class="sheet esheet" id="editSheet">
+  <div class="escroll" id="eScroll">
+    <h2 id="eName"></h2>
+    <div class="dn" id="eDisp"></div>
+    <div id="eChips"></div>
+    <div class="desc" id="eDesc"></div>
+    <div id="eOpts"></div>
   </div>
-  <div class="btns"><button id="eCancel">Скасувати</button><button class="pri" id="eWrite">Записати</button></div>
+  <div class="ebar">
+    <div class="row">
+      <button id="eNeg" title="Змінити знак">±</button>
+      <input type="text" id="eVal" inputmode="decimal" autocomplete="off" spellcheck="false">
+      <span id="eUnit" class="unit"></span>
+    </div>
+    <div class="btns"><button id="eCancel">Скасувати</button><button class="pri" id="eWrite">Записати</button></div>
+  </div>
 </div>
 
 <div class="sheet menu" id="menuSheet">
@@ -309,7 +340,7 @@ function handle(id, sys, comp, d){
     if (sys !== tgtSys || comp !== tgtComp) return;
     customMode = d.getUint32(0, true); vehType = type; baseMode = d.getUint8(6);
     const was = Date.now() - lastHb < 3000; lastHb = Date.now();
-    if (!was){ requestStreams(); if (!params.size && !loading) setTimeout(loadAll, 300); }
+    if (!was){ requestStreams(); loadMeta(); if (!params.size && !loading) setTimeout(loadAll, 300); }
     return;
   }
   if (sys !== tgtSys) return;
@@ -506,6 +537,21 @@ $('#sSkip').onclick = () => { splashSkip = true; updateSplash(); };
 function updateLoadBtn(){ const b = $('#loadBtn'); b.disabled = loading || !fcOk(); b.textContent = loading ? 'Йде…' : 'Завантажити'; }
 function setProg(f){ const p = $('#prog'); if (f === null){ p.style.display='none'; return; } p.style.display='block'; p.firstElementChild.style.width = Math.round(f*100) + '%'; }
 
+/* ================= Описи параметрів (офіційні дані ArduPilot, meta/*.json) ================= */
+let meta = null, metaKind = null;
+const metaOf = n => meta ? meta[n] : null;
+async function loadMeta(){
+  if (ESP_MODE) return;                       // ESP32 не має місця для описів
+  const k = vehKind().toLowerCase();
+  if (metaKind === k) return;
+  metaKind = k;
+  try {
+    const r = await fetch(`meta/${k}.json`);
+    if (!r.ok) throw new Error(r.status);
+    meta = await r.json(); render();
+  } catch(e){ meta = null; metaKind = null; }
+}
+
 /* ================= UI: params list ================= */
 let modOnly = false, renderT = 0;
 function scheduleRender(){ if (renderT) return; renderT = setTimeout(() => { renderT = 0; render(); }, loading ? 500 : 60); }
@@ -515,12 +561,19 @@ function render(){
   const names = [...params.keys()].sort();
   let h = '', n = 0;
   for (const nm of names){
-    if (terms.length && !terms.every(t => nm.includes(t))) continue;
+    const m = metaOf(nm), hay = m && m.n ? nm + ' ' + m.n.toUpperCase() : nm;
+    if (terms.length && !terms.every(t => hay.includes(t))) continue;
     if (modOnly && !changed.has(nm)) continue;
     const p = params.get(nm);
     let disp = esc(nm);
-    if (terms[0]){ const k = nm.indexOf(terms[0]); disp = esc(nm.slice(0,k)) + '<b>' + esc(terms[0]) + '</b>' + esc(nm.slice(k + terms[0].length)); }
-    h += `<div class="p${changed.has(nm)?' mod':''}" data-n="${esc(nm)}"><span class="n">${disp}</span><span class="v">${fmt(p.v,p.t)}</span></div>`;
+    const k = terms[0] ? nm.indexOf(terms[0]) : -1;
+    if (k >= 0) disp = esc(nm.slice(0,k)) + '<b>' + esc(terms[0]) + '</b>' + esc(nm.slice(k + terms[0].length));
+    if (m && m.n) disp += `<small>${esc(m.n)}</small>`;
+    let val = fmt(p.v, p.t);
+    const opt = m && m.v && m.v.find(x => same(x[0], p.v));
+    if (opt) val += `<small> · ${esc(opt[1])}</small>`;
+    else if (m && m.u) val += `<small> ${esc(m.u)}</small>`;
+    h += `<div class="p${changed.has(nm)?' mod':''}" data-n="${esc(nm)}"><span class="n">${disp}</span><span class="v">${val}</span></div>`;
     n++;
   }
   if (!h){
@@ -548,14 +601,55 @@ $('#back').onclick = hide;
 let editName = null;
 $('#list').addEventListener('click', e => {
   const row = e.target.closest('.p'); if (!row) return;
-  editName = row.dataset.n; const p = params.get(editName);
-  $('#eName').textContent = editName;
-  $('#eSub').textContent = `Тип: ${TYPE[p.t] || p.t} · Зараз: ${fmt(p.v, p.t)}`;
-  $('#eVal').value = fmt(p.v, p.t);
-  $('#eWrite').disabled = false; $('#eWrite').textContent = 'Записати';
-  show($('#editSheet'));
-  setTimeout(() => { $('#eVal').focus(); $('#eVal').select(); }, 50);
+  openEdit(row.dataset.n);
 });
+function openEdit(name){
+  editName = name; const p = params.get(name), m = metaOf(name);
+  $('#eName').textContent = name;
+  $('#eDisp').textContent = m && m.n || '';
+  const chips = [`${TYPE[p.t] || p.t}`, `Зараз: ${fmt(p.v, p.t)}${m && m.u ? ' ' + m.u : ''}`];
+  if (m && m.r) chips.push(`Діапазон: ${m.r[0]} … ${m.r[1]}`);
+  if (m && m.i) chips.push(`Крок: ${m.i}`);
+  let ch = chips.map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  if (m && m.rb) ch += '<span class="chip warn">Потрібне перезавантаження ФК</span>';
+  if (m && m.ro) ch += '<span class="chip warn">Лише для читання</span>';
+  $('#eChips').innerHTML = ch;
+  $('#eDesc').textContent = m ? (m.d || '') : (meta || ESP_MODE ? '' : 'Опис з\'явиться, коли програма хоч раз відкриється з інтернетом.');
+  $('#eUnit').textContent = m && m.u || '';
+  $('#eVal').value = fmt(p.v, p.t);
+  const box = $('#eOpts');
+  if (m && m.v) box.innerHTML = '<div class="opts">' + m.v.map(([c, t]) => `<div class="opt" data-c="${c}"><span class="c">${c}</span><span>${esc(t)}</span></div>`).join('') + '</div>';
+  else if (m && m.b) box.innerHTML = '<div class="opts">' + m.b.map(([bit, t]) => `<label class="opt"><input type="checkbox" data-bit="${bit}"><span class="c">${bit}</span><span>${esc(t)}</span></label>`).join('') + '</div>';
+  else box.innerHTML = '';
+  syncOpts();
+  $('#eWrite').disabled = !!(m && m.ro); $('#eWrite').textContent = 'Записати';
+  show($('#editSheet'));
+  $('#eScroll').scrollTop = 0;
+  const sel = box.querySelector('.opt.sel');
+  if (sel && m.v) setTimeout(() => {   // прокрутити лише якщо вибраний варіант не видно
+    const sc = $('#eScroll'), a = sel.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    if (a.bottom > b.bottom) sc.scrollTop += a.bottom - b.bottom + b.height / 3;
+  }, 30);
+  if (!box.innerHTML) setTimeout(() => { $('#eVal').focus(); $('#eVal').select(); }, 50);  // клавіатура лише коли немає списку варіантів
+}
+function curInput(){ const s = $('#eVal').value.trim().replace(',', '.'); return s === '' ? NaN : Number(s); }
+function syncOpts(){
+  const v = curInput();
+  document.querySelectorAll('#eOpts .opt[data-c]').forEach(el => el.classList.toggle('sel', isFinite(v) && same(Number(el.dataset.c), v)));
+  const u = v < 0 ? v + 4294967296 : v;
+  document.querySelectorAll('#eOpts input[data-bit]').forEach(cb => {
+    const on = isFinite(u) && Math.floor(u / 2 ** Number(cb.dataset.bit)) % 2 === 1;
+    cb.checked = on; cb.closest('.opt').classList.toggle('sel', on);
+  });
+}
+$('#eOpts').addEventListener('click', e => { const o = e.target.closest('.opt[data-c]'); if (o){ $('#eVal').value = o.dataset.c; syncOpts(); } });
+$('#eOpts').addEventListener('change', e => {
+  if (e.target.dataset.bit === undefined) return;
+  let sum = 0; document.querySelectorAll('#eOpts input[data-bit]').forEach(cb => { if (cb.checked) sum += 2 ** Number(cb.dataset.bit); });
+  const p = params.get(editName); if (p && p.t === 6 && sum > 2147483647) sum -= 4294967296;  // INT32 зі старшим бітом
+  $('#eVal').value = String(sum); syncOpts();
+});
+$('#eVal').addEventListener('input', syncOpts);
 $('#eCancel').onclick = hide;
 $('#eNeg').onclick = () => { const i = $('#eVal'); const s = i.value.trim(); i.value = s.startsWith('-') ? s.slice(1) : '-' + s; i.focus(); };
 $('#eVal').addEventListener('keydown', e => { if (e.key === 'Enter') $('#eWrite').click(); });
@@ -567,6 +661,10 @@ $('#eWrite').onclick = async () => {
     if (!Number.isInteger(v)){ toast('Цей параметр приймає лише ціле число', 'err'); return; }
     const [lo, hi] = RANGE[p.t]; if (v < lo || v > hi){ toast(`Допустимо від ${lo} до ${hi}`, 'err'); return; }
   }
+  const m = metaOf(editName);
+  if (m && m.ro){ toast('Цей параметр лише для читання', 'err'); return; }
+  if (m && m.r && (v < m.r[0] || v > m.r[1]) && !confirm(`${v} поза рекомендованим діапазоном ${m.r[0]} … ${m.r[1]}. Записати все одно?`)) return;
+  if (m && m.v && !m.v.some(x => same(x[0], v)) && !confirm(`${v} немає серед варіантів для ${editName}. Записати все одно?`)) return;
   if (!fcOk()){ toast('Польотник не на зв\'язку', 'err'); return; }
   const b = $('#eWrite'); b.disabled = true; b.textContent = 'Запис…';
   const name = editName, r = await writeParam(name, v);
@@ -574,7 +672,7 @@ $('#eWrite').onclick = async () => {
   if (r === null){ toast('Немає підтвердження від ФК', 'err'); return; }
   changed.add(name); render();
   if (!same(r, v)) toast(`ФК встановив ${name} = ${fmt(r, p.t)} (не ${v})`, 'warn');
-  else { toast(`${name} = ${fmt(r, p.t)} ✓`, 'ok'); hide(); }
+  else { toast(`${name} = ${fmt(r, p.t)} ✓` + (m && m.rb ? '. Потрібне перезавантаження ФК' : ''), m && m.rb ? 'warn' : 'ok'); hide(); }
 };
 
 $('#menuBtn').onclick = () => show($('#menuSheet'));

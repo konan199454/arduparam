@@ -1,6 +1,7 @@
 // Офлайн-кеш: програма відкривається в полі без інтернету
-const CACHE = 'arduparam-v1';
-const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
+const CACHE = 'arduparam-v2';
+const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
+               'meta/copter.json', 'meta/plane.json', 'meta/rover.json', 'meta/sub.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));

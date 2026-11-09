@@ -1,5 +1,5 @@
 // Офлайн-кеш: програма відкривається в полі без інтернету
-const CACHE = 'arduparam-v3';
+const CACHE = 'arduparam-v4';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
                'meta/copter.json', 'meta/plane.json', 'meta/rover.json', 'meta/sub.json'];
 

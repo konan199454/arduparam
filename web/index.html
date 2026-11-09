@@ -25,6 +25,67 @@ button.danger{background:#3a1d1f;color:#ff8a8a}
 button:disabled{opacity:.4}
 #ptools{margin-top:8px}
 #ptools[hidden]{display:none}
+.ver{font-size:11px;color:var(--mut);font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+#tab-set,#tab-osd{max-width:980px;margin:0 auto}
+.slist{margin:10px 12px}
+.sitem{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer}
+.sitem:active{background:var(--card2)}
+.sitem .ic{font-size:22px;width:30px;text-align:center}
+.sitem .tx{flex:1;min-width:0}
+.sitem .t{font-size:16px}.sitem .e{font-size:12px;color:var(--mut);margin-top:2px}
+.sitem:after{content:'›';color:var(--mut);font-size:24px}
+.shead{display:flex;align-items:center;gap:10px;margin:10px 12px}
+.shead button{padding:8px 12px}
+.shead h2{margin:0;font-size:18px;font-weight:600}
+.card{background:var(--card);border-radius:12px;padding:12px;margin:0 12px 10px}
+.card h4{margin:0 0 10px;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.card h4 span{font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:none;color:var(--acc)}
+.pchips{display:flex;flex-wrap:wrap;gap:6px}
+.pchip{display:flex;flex-direction:column;align-items:flex-start;background:var(--card2);border-radius:10px;padding:8px 10px;text-align:left;min-width:0;max-width:100%}
+.pchip .k{font-size:11px;color:var(--mut)}
+.pchip .val{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--acc);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.prow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.prow:last-child{border-bottom:0}
+.prow small{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.prow .v{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--acc);text-align:right}
+.prow.act{background:rgba(47,191,113,.16);border-radius:8px}
+.note{font-size:13px;color:var(--mut);line-height:1.5;margin:0 12px 10px}
+.warnbox{background:#3a1d1f;color:#ffb3b3;border-radius:12px;padding:12px;margin:0 12px 10px;font-size:14px;line-height:1.45}
+.okbox{background:#14301f;color:#9be3b8;border-radius:12px;padding:12px;margin:0 12px 10px;font-size:14px;line-height:1.45}
+.bigbtn{display:block;width:calc(100% - 24px);margin:0 12px 10px;padding:14px;font-size:16px}
+.btnrow{display:flex;gap:8px;margin:0 12px 10px;flex-wrap:wrap}
+.btnrow button{flex:1;min-width:120px}
+.tr{position:relative;height:14px;background:var(--card2);border-radius:4px;overflow:hidden}
+.tr .f{position:absolute;left:0;top:0;bottom:0;background:var(--acc);opacity:.85}
+.tr .mn,.tr .mx{position:absolute;top:0;bottom:0;width:3px;background:var(--warn);display:none}
+.chbar{display:grid;grid-template-columns:78px 1fr 44px;gap:8px;align-items:center;font-size:12px;margin:7px 0}
+.chbar .r{color:var(--mut)}
+.chbar .pv{font-family:ui-monospace,Menlo,Consolas,monospace;text-align:right}
+.accelpos{font-size:22px;font-weight:600;text-align:center;margin:6px 0 10px;color:var(--text)}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mgrid button{padding:16px 0;font-size:18px;font-weight:600}
+.frm{display:flex;gap:10px;align-items:center;margin-bottom:10px;font-size:14px}
+.frm input{width:90px}
+input[type=number]{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--text);outline:none}
+/* OSD */
+.otabs{display:flex;gap:6px;margin:10px 12px;flex-wrap:wrap}
+.otabs button{flex:1;min-width:60px}
+.otabs button.on{background:var(--acc);color:#fff}
+.ogridwrap{margin:0 12px 10px;background:#1b2530;border-radius:10px;padding:6px;overflow:hidden}
+.ogrid{position:relative;width:100%;touch-action:none;user-select:none;-webkit-user-select:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-color:#26394a}
+.oitem{position:absolute;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;color:#fff;text-shadow:0 0 2px #000,0 0 2px #000;cursor:grab;line-height:1;display:flex;align-items:center;border-radius:2px}
+.oitem.sel{outline:2px solid var(--warn);background:rgba(240,160,32,.25);z-index:2}
+.oitem.pend{color:#ffd400}
+.olist .prow{padding:10px 4px}
+.olist input{width:22px;height:22px;accent-color:var(--acc);flex:none}
+.olist .nm{flex:1;min-width:0}
+.olist .pos{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--mut)}
+.olist .prow.sel{background:rgba(240,160,32,.14);border-radius:8px}
+.nudge{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 12px 10px}
+.nudge button{padding:12px 0;font-size:18px}
+nav button{font-size:11px}
 input[type=search],input[type=text]{font:inherit;width:100%;min-width:0;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none;-webkit-appearance:none}
 input:focus{border-color:var(--acc)}
 .tog{font-size:13px;padding:10px;white-space:nowrap}
@@ -129,6 +190,7 @@ nav svg{width:24px;height:24px}
   <div class="row">
     <span class="dot" id="dot"></span>
     <span id="st">Підключення…</span>
+    <span class="ver" id="verTop"></span>
     <button id="usbBtn" hidden>🔌 USB</button>
     <button id="menuBtn" aria-label="Меню">⋯</button>
   </div>
@@ -180,11 +242,17 @@ nav svg{width:24px;height:24px}
   <section id="tab-par" hidden>
     <div id="list"></div>
   </section>
+
+  <section id="tab-set" hidden></section>
+
+  <section id="tab-osd" hidden></section>
 </main>
 
 <nav>
   <button id="tbFly" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 13h5l2-2h4l2 2h5"/></svg>Політ</button>
   <button id="tbPar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Параметри</button>
+  <button id="tbSet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Налаштування</button>
+  <button id="tbOsd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h4M14 16h4M6 16h2"/></svg>OSD</button>
 </nav>
 
 <div id="back"></div>
@@ -248,6 +316,7 @@ nav svg{width:24px;height:24px}
     <div id="sst"><span class="dot" id="sdot"></span><span id="stx">Очікування борту…</span></div>
     <button id="sUsb" class="pri" hidden>🔌 Підключити USB</button>
     <button id="sSkip">Відкрити без борту</button>
+    <div class="ver" id="verSplash"></div>
   </div>
 </div>
 
@@ -261,7 +330,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 /* ================= MAVLink ================= */
 // id: [crc_extra, мінімальна довжина payload]
 const MSG = {0:[50,9],1:[124,31],20:[214,20],21:[159,2],22:[220,25],23:[168,23],24:[24,30],27:[144,26],
-             30:[39,28],74:[20,20],76:[152,33],77:[143,3],241:[90,32],253:[83,51]};
+             30:[39,28],36:[222,37],65:[118,42],74:[20,20],76:[152,33],77:[143,3],241:[90,32],253:[83,51]};
 function crcAcc(b, c){ let t = (b ^ (c & 0xff)) & 0xff; t = (t ^ (t << 4)) & 0xff; return ((c >> 8) ^ (t << 8) ^ (t << 3) ^ (t >> 4)) & 0xffff; }
 function encode(id, payload, sys, comp, seqObj){
   const len = payload.length, f = new Uint8Array(12 + len);
@@ -327,10 +396,10 @@ function sendHeartbeat(){ const [u] = mk(9); u[4]=6; u[5]=8; u[7]=4; u[8]=3; tx(
 function reqList(){ const [u] = mk(2); u[0]=tgtSys; u[1]=tgtComp; tx(21, u); }
 function reqRead(idx){ const [u,d] = mk(20); d.setInt16(0, idx, true); u[2]=tgtSys; u[3]=tgtComp; tx(20, u); }
 function paramSet(name, val, type){ const [u,d] = mk(23); d.setFloat32(0, val, true); u[4]=tgtSys; u[5]=tgtComp; putStr(u, 6, name, 16); u[22]=type; tx(23, u); }
-function cmdLong(cmd, p1=0, p2=0){ const [u,d] = mk(33); d.setFloat32(0,p1,true); d.setFloat32(4,p2,true); d.setUint16(28,cmd,true); u[30]=tgtSys; u[31]=tgtComp; tx(76, u); }
+function cmdLong(cmd, ...ps){ const [u,d] = mk(33); for (let k = 0; k < 7; k++) d.setFloat32(k*4, ps[k] || 0, true); d.setUint16(28,cmd,true); u[30]=tgtSys; u[31]=tgtComp; tx(76, u); }
 function requestStreams(){
-  // MAV_CMD_SET_MESSAGE_INTERVAL: id, інтервал у мкс
-  [[30,100000],[27,200000],[1,500000],[74,250000],[24,500000],[241,500000]].forEach(([id,us]) => cmdLong(511, id, us));
+  // MAV_CMD_SET_MESSAGE_INTERVAL: id, інтервал у мкс (RC_CHANNELS і SERVO_OUTPUT_RAW для вкладки «Налаштування»)
+  [[30,100000],[27,200000],[1,500000],[74,250000],[24,500000],[241,500000],[65,150000],[36,200000]].forEach(([id,us]) => cmdLong(511, id, us));
 }
 
 function handle(id, sys, comp, d){
@@ -354,6 +423,12 @@ function handle(id, sys, comp, d){
     case 24: tel.gps = {fix:d.getUint8(28), sats:d.getUint8(29), t:Date.now()}; break;
     case 74: tel.hud = {alt:d.getFloat32(8,true), gs:d.getFloat32(4,true), hdg:d.getInt16(16,true), thr:d.getUint16(18,true), t:Date.now()}; break;
     case 253: addMsg(d.getUint8(0), getStr(d,1,50)); break;
+    case 65: { const ch = []; for (let k = 0; k < 18; k++){ const v = d.getUint16(4 + k*2, true); ch.push(v === 65535 ? 0 : v); }
+               tel.rc = {ch, n: d.getUint8(40), rssi: d.getUint8(41), t: Date.now()}; onRc(); break; }
+    case 36: { const s = []; for (let k = 0; k < 8; k++) s.push(d.getUint16(4 + k*2, true)); for (let k = 0; k < 8; k++) s.push(d.getUint16(21 + k*2, true));
+               tel.srv = {s, t: Date.now()}; break; }
+    case 76: if (d.getUint16(28, true) === 42429) onAccelPos(Math.round(d.getFloat32(0, true))); break;   // ArduPilot просить наступне положення
+    case 77: onAck(d.getUint16(0, true), d.getUint8(2)); break;
   }
 }
 
@@ -539,7 +614,7 @@ function updateLoadBtn(){ const b = $('#loadBtn'); b.disabled = loading || !fcOk
 function setProg(f){ const p = $('#prog'); if (f === null){ p.style.display='none'; return; } p.style.display='block'; p.firstElementChild.style.width = Math.round(f*100) + '%'; }
 
 /* ================= Описи параметрів (офіційні дані ArduPilot, meta/*.json) ================= */
-const APP_VERSION = 3;
+const APP_VERSION = 4;
 let meta = null, metaKind = null, metaErr = '', metaBusy = null;
 const metaOf = n => meta ? meta[n] : null;
 function loadMeta(){
@@ -567,6 +642,8 @@ function metaStatus(){
 let modOnly = false, renderT = 0;
 function scheduleRender(){ if (renderT) return; renderT = setTimeout(() => { renderT = 0; render(); }, loading ? 500 : 60); }
 function render(){
+  if (!$('#tab-set').hidden) renderSetup();
+  if (!$('#tab-osd').hidden) renderOsd();
   if ($('#tab-par').hidden){ updateCount(null); return; }
   const terms = $('#q').value.trim().toUpperCase().split(/\s+/).filter(Boolean);
   const names = [...params.keys()].sort();
@@ -762,19 +839,389 @@ function addMsg(sev, text){
   const d = new Date(); msgs.unshift({sev, text, t: d.toTimeString().slice(0, 8)}); if (msgs.length > 50) msgs.pop();
   $('#msgs').innerHTML = msgs.map(m => `<div class="s${m.sev}"><span class="t">${m.t}</span>${esc(m.text)}</div>`).join('');
   if (sev <= 3) toast(text, 'err');
+  if (setSection === 'accel' && !$('#tab-set').hidden) renderSetup();
 }
 
 /* ================= Tabs ================= */
 function setTab(t){
-  const fly = t === 'fly';
-  $('#tab-fly').hidden = !fly; $('#tab-par').hidden = fly; $('#ptools').hidden = fly;
-  $('#tbFly').classList.toggle('on', fly); $('#tbPar').classList.toggle('on', !fly);
+  const T = {fly:'#tab-fly', par:'#tab-par', set:'#tab-set', osd:'#tab-osd'};
+  if (!T[t]) t = 'fly';
+  for (const k in T) $(T[k]).hidden = k !== t;
+  $('#ptools').hidden = t !== 'par';
+  $('#tbFly').classList.toggle('on', t === 'fly'); $('#tbPar').classList.toggle('on', t === 'par');
+  $('#tbSet').classList.toggle('on', t === 'set'); $('#tbOsd').classList.toggle('on', t === 'osd');
   try { localStorage.setItem('tab', t); } catch(e){}
-  if (fly) hudDirty = true; else render();
+  if (t === 'fly') hudDirty = true; else if (t === 'par') render(); else if (t === 'set') renderSetup(); else renderOsd();
   window.scrollTo(0, 0);
 }
 $('#tbFly').onclick = () => setTab('fly');
 $('#tbPar').onclick = () => setTab('par');
+$('#tbSet').onclick = () => { if (!$('#tab-set').hidden && setSection){ setSection = null; renderSetup(); } else setTab('set'); };
+$('#tbOsd').onclick = () => setTab('osd');
+
+/* ================= Вкладка «Налаштування» (Mandatory Hardware) ================= */
+const SECTIONS = [
+  ['frame', '🛸', 'Тип рами', 'Frame Type'],
+  ['accel', '📐', 'Калібрування акселерометра', 'Accel Calibration'],
+  ['radio', '🎮', 'Калібрування пульта', 'Radio Calibration'],
+  ['motor', '⚙️', 'Тест і напрямок моторів', 'Motor Setup'],
+  ['servo', '🔌', 'Виходи', 'Servo Output'],
+  ['serial', '🔗', 'Послідовні порти', 'Serial Ports'],
+  ['esc', '⚡', 'Калібрування ESC', 'ESC Calibration'],
+  ['modes', '🕹️', 'Режими польоту', 'Flight Modes']];
+let setSection = null, escStage = false;
+const accel = {pos: 0, wait: false, result: '', mode: ''};
+const rcCal = {on: false, min: [], max: []};
+const mt = {thr: 5, dur: 2};
+const MOTOR_COUNT = {1:4, 2:6, 3:8, 4:8, 5:6, 7:3, 10:1, 12:12, 14:10};
+
+const pv = n => { const p = params.get(n); return p ? p.v : undefined; };
+function pval(name){
+  const p = params.get(name); if (!p) return '';
+  const m = metaOf(name); let v = fmt(p.v, p.t);
+  const o = m && m.v && m.v.find(x => same(x[0], p.v));
+  if (o) v += ' · ' + o[1]; else if (m && m.u) v += ' ' + m.u;
+  return v;
+}
+function pc(name, label){
+  if (!params.has(name)) return '';
+  return `<button class="pchip" data-p="${esc(name)}"><span class="k">${esc(label || name)}</span><span class="val">${esc(pval(name))}</span></button>`;
+}
+function prow(name, label, id){
+  if (!params.has(name)) return '';
+  const m = metaOf(name);
+  return `<div class="prow" data-p="${esc(name)}"${id ? ` id="${id}"` : ''}><span>${esc(label || (m && m.n) || name)}<small>${esc(name)}</small></span><span class="v">${esc(pval(name))}</span></div>`;
+}
+const card = (title, body, right = '') => body ? `<div class="card"><h4>${title}${right ? `<span>${right}</span>` : ''}</h4>${body}</div>` : '';
+const chips = (...x) => { const h = x.join(''); return h ? `<div class="pchips">${h}</div>` : ''; };
+const needParams = () => params.size ? '' :
+  `<div class="note">Щоб налаштовувати, спершу завантаж параметри з борту.</div><button class="bigbtn pri" data-act="loadp"${fcOk() ? '' : ' disabled'}>Завантажити параметри</button>`;
+const rebootBtn = () => '<button class="bigbtn" data-act="reboot">⟳ Перезавантажити польотник</button>';
+
+const SETUP_PAGES = {
+  frame(){
+    const np = needParams(); if (np) return np;
+    let h = card('Рама', prow('FRAME_CLASS', 'Клас рами') + prow('FRAME_TYPE', 'Тип / конфігурація'));
+    h += card('QuadPlane (VTOL)', prow('Q_ENABLE', 'QuadPlane увімкнено') + prow('Q_FRAME_CLASS', 'Клас рами') + prow('Q_FRAME_TYPE', 'Тип / конфігурація'));
+    if (!h) return '<div class="note">Для цього типу борту вибору рами немає.</div>';
+    return '<div class="note">Натисни на рядок і вибери зі списку. Після зміни рами перезавантаж польотник.</div>' + h + rebootBtn();
+  },
+  accel(){
+    const POS = {1:'Постав борт РІВНО', 2:'Поклади на ЛІВИЙ бік', 3:'Поклади на ПРАВИЙ бік', 4:'Носом ВНИЗ', 5:'Носом ВГОРУ', 6:'Догори ДНОМ (на спину)'};
+    let h = '';
+    if (accel.pos >= 1 && accel.pos <= 6){
+      h += `<div class="card"><h4>Положення ${accel.pos} з 6</h4><div class="accelpos">${POS[accel.pos]}</div>
+            <div class="note" style="margin:0 0 10px">Постав борт у це положення, не рухай і натисни «Готово».</div>
+            <button class="bigbtn pri" style="width:100%;margin:0" data-act="accnext"${accel.wait ? ' disabled' : ''}>${accel.wait ? 'Вимірювання…' : 'Готово, далі'}</button></div>`;
+    } else {
+      if (accel.result === 'ok') h += '<div class="okbox">✓ Калібрування успішне. Перезавантаж польотник.</div>';
+      if (accel.result === 'fail') h += '<div class="warnbox">✗ Калібрування не вдалося. Спробуй ще раз і тримай борт нерухомо.</div>';
+      h += '<div class="note">Повне калібрування: борт по черзі ставиться в 6 положень. «Рівень» задає горизонт: постав борт рівно перед натисканням.</div>';
+      h += '<button class="bigbtn pri" data-act="acc6">Калібрувати акселерометр (6 положень)</button>';
+      h += '<button class="bigbtn" data-act="acclevel">Калібрувати рівень (Level)</button>';
+      h += '<button class="bigbtn" data-act="accsimple">Просте калібрування (1 положення)</button>';
+    }
+    h += card('Повідомлення борту', msgs.slice(0, 6).map(m => `<div class="s${m.sev}" style="font:12px ui-monospace,Menlo,monospace;padding:3px 0">${esc(m.text)}</div>`).join('') || '<div class="note" style="margin:0">Поки немає</div>');
+    return h;
+  },
+  radio(){
+    const roles = {}, rm = (n, d, l) => { const v = pv(n); roles[v !== undefined ? Math.round(v) : d] = l; };
+    rm('RCMAP_ROLL', 1, 'Roll'); rm('RCMAP_PITCH', 2, 'Pitch'); rm('RCMAP_THROTTLE', 3, 'Газ'); rm('RCMAP_YAW', 4, 'Yaw');
+    const mc = pv('FLTMODE_CH') ?? pv('MODE_CH'); if (mc) roles[Math.round(mc)] = 'Режим';
+    const n = Math.min(16, Math.max(8, tel.rc ? tel.rc.n : 8));
+    let bars = '';
+    for (let i = 1; i <= n; i++) bars += `<div class="chbar"><span class="r">${i} ${roles[i] || ''}</span><div class="tr"><i class="f" id="rcf${i}"></i><i class="mn" id="rcmn${i}"></i><i class="mx" id="rcmx${i}"></i></div><span class="pv" id="rcv${i}">—</span></div>`;
+    let h = card('Канали пульта', bars, tel.rc && tel.rc.rssi !== 255 ? 'RSSI ' + tel.rc.rssi : '');
+    const np = needParams(); if (np) return h + np;
+    if (!rcCal.on) h += '<div class="note">Натисни «Почати», рухай усі стіки й перемикачі до упору в усі боки, потім постав стіки по центру, газ униз і натисни «Зберегти».</div><button class="bigbtn pri" data-act="rcstart">Почати калібрування</button>';
+    else h += '<div class="warnbox">Рухай усі стіки й перемикачі до упору. Жовті мітки показують запам\'ятані мін і макс.</div><div class="btnrow"><button data-act="rccancel">Скасувати</button><button class="pri" data-act="rcsave">Зберегти</button></div>';
+    return h + card('Призначення каналів', chips(pc('RCMAP_ROLL', 'Roll'), pc('RCMAP_PITCH', 'Pitch'), pc('RCMAP_THROTTLE', 'Газ'), pc('RCMAP_YAW', 'Yaw')));
+  },
+  motor(){
+    const np = needParams(); if (np) return np;
+    const n = MOTOR_COUNT[Math.round(pv('FRAME_CLASS') || 1)] || 4;
+    let btns = ''; for (let i = 1; i <= n; i++) btns += `<button data-act="mt" data-m="${i}">${String.fromCharCode(64 + i)}</button>`;
+    let h = '<div class="warnbox">⚠️ ЗНІМИ ПРОПЕЛЕРИ перед тестом моторів! Борт має бути дизармлений, батарея підключена.</div>';
+    h += `<div class="card"><h4>Тест моторів</h4>
+          <div class="frm"><label>Газ, %</label><input type="number" id="mtThr" min="1" max="100" value="${mt.thr}"><label>Час, с</label><input type="number" id="mtDur" min="1" max="10" value="${mt.dur}"></div>
+          <div class="mgrid">${btns}</div>
+          <div class="btnrow" style="margin:10px 0 0"><button class="pri" data-act="mtall" data-n="${n}">Усі по черзі</button></div>
+          <div class="note" style="margin:10px 0 0">A — передній правий мотор, далі B, C, D… за годинниковою стрілкою (вид зверху).</div></div>`;
+    h += card('Напрямок обертання', chips(pc('SERVO_BLH_RVMASK', 'Реверс моторів (DShot/BLHeli)'), pc('SERVO_BLH_AUTO', 'BLHeli авто'), pc('SERVO_BLH_MASK', 'BLHeli виходи'))
+           + '<div class="note" style="margin:8px 0 0">Відміть мотори, які крутяться не в той бік, і перезавантаж польотник.</div>');
+    h += card('Мотори', chips(pc('MOT_PWM_TYPE', 'Протокол'), pc('MOT_SPIN_ARM', 'Оберти при арм.'), pc('MOT_SPIN_MIN', 'Мін. оберти'), pc('MOT_SPIN_MAX', 'Макс. оберти'), pc('MOT_THST_HOVER', 'Газ висіння'), pc('FRAME_CLASS', 'Рама'), pc('FRAME_TYPE', 'Тип рами')));
+    return h + rebootBtn();
+  },
+  servo(){
+    const np = needParams(); if (np) return np;
+    let h = '<div class="note">Живе значення ШІМ кожного виходу. Натисни на поле, щоб змінити.</div>';
+    for (let i = 1; i <= 32; i++){
+      if (!params.has(`SERVO${i}_FUNCTION`)) continue;
+      h += `<div class="card"><h4>Вихід ${i}<span id="sv${i}">—</span></h4><div class="tr" style="margin-bottom:10px"><i class="f" id="svf${i}"></i></div>`
+         + chips(pc(`SERVO${i}_FUNCTION`, 'Функція'), pc(`SERVO${i}_MIN`, 'Мін'), pc(`SERVO${i}_TRIM`, 'Центр'), pc(`SERVO${i}_MAX`, 'Макс'), pc(`SERVO${i}_REVERSED`, 'Реверс')) + '</div>';
+    }
+    return h;
+  },
+  serial(){
+    const np = needParams(); if (np) return np;
+    let h = '<div class="note">SERIAL0 — це USB. Після зміни протоколу чи швидкості перезавантаж польотник.</div>';
+    for (let i = 0; i <= 9; i++){
+      if (!params.has(`SERIAL${i}_PROTOCOL`)) continue;
+      h += card(`SERIAL${i}${i === 0 ? ' (USB)' : ''}`, chips(pc(`SERIAL${i}_PROTOCOL`, 'Протокол'), pc(`SERIAL${i}_BAUD`, 'Швидкість'), pc(`SERIAL${i}_OPTIONS`, 'Опції')));
+    }
+    return h + rebootBtn();
+  },
+  esc(){
+    const np = needParams(); if (np) return np;
+    if (!params.has('ESC_CALIBRATION')) return '<div class="note">Для цього типу борту калібрування ESC тут немає.</div>' + card('Мотори', chips(pc('MOT_PWM_TYPE', 'Протокол')));
+    const pt = Math.round(pv('MOT_PWM_TYPE') || 0);
+    let h = pt >= 4 && pt <= 7 ? '<div class="okbox">У вас DShot: калібрування ESC не потрібне.</div>' : '';
+    h += card('Параметри', chips(pc('MOT_PWM_TYPE', 'Протокол'), pc('MOT_PWM_MIN', 'PWM мін'), pc('MOT_PWM_MAX', 'PWM макс'), pc('MOT_SPIN_ARM', 'Оберти при арм.'),
+              pc('MOT_SPIN_MIN', 'Мін. оберти'), pc('MOT_SPIN_MAX', 'Макс. оберти'), pc('ESC_CALIBRATION', 'Режим калібрування')));
+    if (escStage) h += '<div class="okbox"><b>Тепер:</b><br>1. Від\'єднай батарею і USB.<br>2. Підключи батарею. ESC запищать і відкалібруються автоматично.<br>3. Від\'єднай і знову підключи батарею.</div>';
+    else h += '<div class="warnbox">⚠️ ЗНІМИ ПРОПЕЛЕРИ! Під час калібрування мотори можуть закрутитися на повний газ.</div><button class="bigbtn pri" data-act="esccal">Калібрувати ESC</button>';
+    return h;
+  },
+  modes(){
+    const np = needParams(); if (np) return np;
+    const ch = params.has('FLTMODE_CH') ? 'FLTMODE_CH' : params.has('MODE_CH') ? 'MODE_CH' : null;
+    const pre = ch === 'MODE_CH' ? 'MODE' : 'FLTMODE';
+    const PWM = ['до 1230', '1231–1360', '1361–1490', '1491–1620', '1621–1749', 'від 1750'];
+    let rows = ''; for (let k = 1; k <= 6; k++) rows += prow(`${pre}${k}`, `Положення ${k} · PWM ${PWM[k - 1]}`, `mdr${k}`);
+    let h = `<div class="card"><h4>Зараз</h4><div class="accelpos" id="mdCur">${fcOk() ? modeName() : '—'}</div><div class="note" style="margin:0;text-align:center">PWM каналу режимів: <b id="mdPwm">—</b></div></div>`;
+    h += card('Режими на перемикачі', rows);
+    h += card('Інше', chips(ch ? pc(ch, 'Канал режимів') : '', pc('SIMPLE', 'Simple'), pc('SUPER_SIMPLE', 'Super Simple'), pc('INITIAL_MODE', 'Початковий режим')));
+    return h;
+  }
+};
+
+function renderSetup(){
+  const el = $('#tab-set'); if (el.hidden) return;
+  if (!setSection){
+    el.innerHTML = '<div class="slist">' + SECTIONS.map(([k, ic, t, e]) =>
+      `<div class="sitem" data-sec="${k}"><span class="ic">${ic}</span><div class="tx"><div class="t">${t}</div><div class="e">${e}</div></div></div>`).join('') + '</div>';
+    return;
+  }
+  const s = SECTIONS.find(x => x[0] === setSection);
+  el.innerHTML = `<div class="shead"><button data-sec="">‹ Назад</button><h2>${s[2]}</h2></div>` + SETUP_PAGES[setSection]();
+  liveSetup();
+}
+function liveSetup(){
+  if ($('#tab-set').hidden || !setSection) return;
+  const pos = v => Math.max(0, Math.min(100, (v - 800) / 14));
+  const rc = tel.rc && Date.now() - tel.rc.t < 2000 ? tel.rc : null;
+  if (setSection === 'radio') for (let i = 1; i <= 16; i++){
+    const f = $('#rcf' + i); if (!f) continue;
+    const v = rc ? rc.ch[i - 1] : 0;
+    f.style.width = (v ? pos(v) : 0) + '%'; $('#rcv' + i).textContent = v || '—';
+    const mn = $('#rcmn' + i), mx = $('#rcmx' + i), show = rcCal.on && rcCal.max[i];
+    mn.style.display = mx.style.display = show ? 'block' : 'none';
+    if (show){ mn.style.left = pos(rcCal.min[i]) + '%'; mx.style.left = 'calc(' + pos(rcCal.max[i]) + '% - 3px)'; }
+  }
+  if (setSection === 'servo'){
+    const s = tel.srv && Date.now() - tel.srv.t < 2000 ? tel.srv.s : null;
+    for (let i = 1; i <= 32; i++){
+      const el = $('#sv' + i); if (!el) continue;
+      const v = s && i <= 16 ? s[i - 1] : 0;
+      el.textContent = v ? v + ' µs' : '—'; $('#svf' + i).style.width = (v ? pos(v) : 0) + '%';
+    }
+  }
+  if (setSection === 'modes'){
+    const chn = Math.round(pv('FLTMODE_CH') ?? pv('MODE_CH') ?? 0);
+    const v = rc && chn ? rc.ch[chn - 1] : 0;
+    const p = !v ? 0 : v <= 1230 ? 1 : v <= 1360 ? 2 : v <= 1490 ? 3 : v <= 1620 ? 4 : v <= 1749 ? 5 : 6;
+    const e = $('#mdPwm'); if (e) e.textContent = v || '—';
+    const c = $('#mdCur'); if (c) c.textContent = fcOk() ? modeName() : '—';
+    for (let k = 1; k <= 6; k++){ const r = $('#mdr' + k); if (r) r.classList.toggle('act', k === p); }
+  }
+}
+function onRc(){
+  if (!rcCal.on) return;
+  tel.rc.ch.forEach((v, k) => { const i = k + 1; if (v < 800 || v > 2300) return;
+    rcCal.min[i] = Math.min(rcCal.min[i] ?? v, v); rcCal.max[i] = Math.max(rcCal.max[i] ?? v, v); });
+}
+function onAccelPos(p){
+  if (p === 16777215){ accel.pos = 0; accel.result = 'ok'; toast('Калібрування акселерометра успішне ✓', 'ok'); }
+  else if (p === 16777216){ accel.pos = 0; accel.result = 'fail'; toast('Калібрування не вдалося', 'err'); }
+  else if (p >= 1 && p <= 6){ accel.pos = p; accel.wait = false; }
+  if (setSection === 'accel') renderSetup();
+}
+function onAck(cmd, res){
+  const R = {1:'тимчасово відхилено', 2:'заборонено', 3:'не підтримується', 4:'помилка', 5:'виконується'};
+  if (cmd === 241){
+    if (res === 0 || res === 5){
+      if (accel.mode === 'level') toast('Рівень відкалібровано ✓', 'ok');
+      if (accel.mode === 'simple') toast('Просте калібрування виконано ✓', 'ok');
+    } else { toast('Калібрування: ' + (R[res] || res) + (armed() ? ' (борт заармлений)' : ''), 'err'); accel.pos = 0; if (setSection === 'accel') renderSetup(); }
+  }
+  if (cmd === 209 && res !== 0) toast('Тест моторів: ' + (R[res] || res) + '. Борт має бути дизармлений', 'err');
+}
+async function saveRc(){
+  if (!confirm('Постав стіки по центру, газ униз. Зберегти калібрування?')) return;
+  const cur = tel.rc ? tel.rc.ch : [], list = [];
+  for (let i = 1; i <= 16; i++){
+    const mn = rcCal.min[i], mx = rcCal.max[i];
+    if (mn === undefined || mx - mn < 300 || !params.has(`RC${i}_MIN`)) continue;
+    const tr = Math.max(mn, Math.min(mx, cur[i - 1] || Math.round((mn + mx) / 2)));
+    list.push([`RC${i}_MIN`, mn], [`RC${i}_MAX`, mx], [`RC${i}_TRIM`, tr]);
+  }
+  if (!list.length){ toast('Жоден канал не рухався достатньо (потрібно хоча б 300 мкс)', 'warn'); return; }
+  rcCal.on = false; renderSetup();
+  let ok = 0;
+  for (const [n, v] of list){ const r = await writeParam(n, v); if (r !== null){ ok++; changed.add(n); } }
+  toast(`Збережено ${ok} з ${list.length} параметрів пульта`, ok === list.length ? 'ok' : 'warn'); render();
+}
+async function doAct(a, el){
+  if (a === 'loadp'){ loadAll(); return; }
+  if (a === 'reboot'){ $('#mReboot').click(); return; }
+  const live = ['acc6', 'acclevel', 'accsimple', 'accnext', 'mt', 'mtall', 'esccal', 'rcstart'];
+  if (live.includes(a) && !fcOk()){ toast('Борт не на зв\'язку', 'err'); return; }
+  if (['acc6', 'acclevel', 'accsimple', 'mt', 'mtall', 'esccal'].includes(a) && armed()){ toast('Спочатку дизарм', 'err'); return; }
+  switch (a){
+    case 'acc6': accel.pos = 0; accel.result = ''; accel.mode = '6'; cmdLong(241, 0, 0, 0, 0, 1); toast('Запуск калібрування…'); break;
+    case 'acclevel': accel.result = ''; accel.mode = 'level'; cmdLong(241, 0, 0, 0, 0, 2); break;
+    case 'accsimple': accel.result = ''; accel.mode = 'simple'; cmdLong(241, 0, 0, 0, 0, 4); break;
+    case 'accnext': accel.wait = true; cmdLong(42429, accel.pos); renderSetup(); break;
+    case 'rcstart': rcCal.on = true; rcCal.min = []; rcCal.max = []; renderSetup(); break;
+    case 'rccancel': rcCal.on = false; renderSetup(); break;
+    case 'rcsave': await saveRc(); break;
+    case 'mt': case 'mtall': {
+      const thr = Math.max(1, Math.min(100, Number($('#mtThr').value) || 5)), dur = Math.max(1, Math.min(10, Number($('#mtDur').value) || 2));
+      mt.thr = thr; mt.dur = dur;
+      if (a === 'mt'){ cmdLong(209, Number(el.dataset.m), 0, thr, dur, 0, 0); toast(`Мотор ${el.textContent}: ${thr}% на ${dur} с`); }
+      else { cmdLong(209, 1, 0, thr, dur, Number(el.dataset.n), 0); toast(`Усі мотори по черзі: ${thr}% по ${dur} с`); }
+      break;
+    }
+    case 'esccal': {
+      if (!confirm('Пропелери знято? Почати калібрування ESC?')) return;
+      const r = await writeParam('ESC_CALIBRATION', 3);
+      if (r === null || !same(r, 3)){ toast('Не вдалося записати ESC_CALIBRATION', 'err'); return; }
+      escStage = true; renderSetup(); break;
+    }
+  }
+}
+$('#tab-set').addEventListener('click', e => {
+  const sec = e.target.closest('[data-sec]');
+  if (sec){ setSection = sec.dataset.sec || null; escStage = false; renderSetup(); window.scrollTo(0, 0); return; }
+  const p = e.target.closest('[data-p]'); if (p && params.has(p.dataset.p)){ openEdit(p.dataset.p); return; }
+  const a = e.target.closest('[data-act]'); if (a && !a.disabled) doAct(a.dataset.act, a);
+});
+$('#tab-set').addEventListener('input', e => {
+  if (e.target.id === 'mtThr') mt.thr = Number(e.target.value) || mt.thr;
+  if (e.target.id === 'mtDur') mt.dur = Number(e.target.value) || mt.dur;
+});
+
+/* ================= Вкладка OSD ================= */
+let osdScr = 1, osdSel = null, osdDrag = null;
+const osdPend = new Map();
+// Приблизний вигляд елементів на екрані (для попереднього перегляду)
+const OSD_SAMPLE = {ALTITUDE:' 12m', BAT_VOLT:'16.4V', RSSI:'RSSI 99', CURRENT:' 12.3A', BATUSED:' 850mAh', SATS:'SAT14', FLTMODE:'STAB',
+  MESSAGE:'READY TO FLY', GSPEED:'> 25kh', HORIZON:'--- + ---', HOME:'H 120m', HEADING:'275', THROTTLE:' 35%', COMPASS:'N . . E . .',
+  WIND:'W 3ms', ASPEED:'A 20kh', VSPEED:'^1.2', ESCTEMP:'45C', ESCRPM:'12K', ESCAMPS:'8A', GPSLAT:'50.4501', GPSLONG:'30.5234',
+  ROLL:'R 5', PITCH:'P -3', TEMP:'23C', HDOP:'HD1.2', WAYPOINT:'WP 3', XTRACK:'XT 2m', DIST:'D 1.2km', STATS:'STATS', FLTIME:'12:34',
+  CLIMBEFF:'CE 5', EFF:'12mAh', BTEMP:'25C', ATEMP:'22C', BAT2_VLT:'12.1V', BAT2USED:'120mAh', ASPD1:'A1 20', ASPD2:'A2 20',
+  VTX_PWR:'200mW', TER_HGT:'T 45m', AVGCELLV:'4.10V', RESTVOLT:'16.6V', CELLVOLT:'4.10V', BATTBAR:'[|||| ]', ARMING:'ARMED',
+  POWER:'250W', RRPM:'RPM', LINK_Q:'LQ100', RC_PWR:'250mW', RC_LQ:'LQ100', RC_SNR:'SNR9', RC_ANT:'ANT1', RC_ACTIVE_ANT:'ANT1',
+  RNGF:'RF 2m', ACRVOLT:'4.1V', BAT_PCT:' 85%', SIDEBARS:'| |', CRSSHAIR:'+', HOMEDIST:'1.2km', HOMEDIR:'>', CALLSIGN:'OMEGA',
+  CLK:'12:00', PLUSCODE:'8GX', AVGCELLREST:'4.1V', FENCE:'FENCE', HGT_ABVTERR:'45m'};
+function osdItems(n){
+  const items = [], re = new RegExp(`^OSD${n}_(.+)_EN$`);
+  for (const nm of params.keys()){
+    const m = nm.match(re); if (!m) continue;
+    const it = m[1]; if (!params.has(`OSD${n}_${it}_X`)) continue;
+    const pend = osdPend.get(`${n}_${it}`);
+    items.push({it, en: Math.round(pv(nm)) === 1, pend: !!pend, txt: OSD_SAMPLE[it] || it.slice(0, 6),
+                x: pend ? pend.x : Math.round(pv(`OSD${n}_${it}_X`)), y: pend ? pend.y : Math.round(pv(`OSD${n}_${it}_Y`))});
+  }
+  return items.sort((a, b) => a.it.localeCompare(b.it));
+}
+function renderOsd(){
+  const el = $('#tab-osd'); if (el.hidden || osdDrag) return;
+  if (!params.size){ el.innerHTML = '<div style="height:10px"></div>' + needParams(); return; }
+  if (!params.has('OSD_TYPE')){ el.innerHTML = '<div class="note" style="margin-top:14px">На цьому польотнику OSD немає (немає параметра OSD_TYPE).</div>'; return; }
+  const n = osdScr, items = osdItems(n);
+  let W = Math.round(pv('OSD_TYPE')) === 5 ? 50 : 30, H = Math.round(pv('OSD_TYPE')) === 5 ? 18 : 16;   // 5 = HD (MSP DisplayPort)
+  for (const i of items) if (i.en){ W = Math.max(W, i.x + i.txt.length); H = Math.max(H, i.y + 1); }
+  let h = '<div class="otabs">';
+  for (let k = 1; k <= 4; k++) if (params.has(`OSD${k}_ENABLE`)) h += `<button data-scr="${k}" class="${k === n ? 'on' : ''}">Екран ${k}${Math.round(pv(`OSD${k}_ENABLE`)) ? '' : ' (вимк.)'}</button>`;
+  h += '</div>';
+  h += `<div class="ogridwrap"><div class="ogrid" id="ogrid" data-w="${W}" data-h="${H}" style="aspect-ratio:${W * 12}/${H * 18};background-size:${100 / W}% ${100 / H}%">`;
+  for (const i of items) if (i.en) h += `<div class="oitem${osdSel === i.it ? ' sel' : ''}${i.pend ? ' pend' : ''}" data-it="${i.it}" style="left:${i.x / W * 100}%;top:${i.y / H * 100}%;height:${100 / H}%">${esc(i.txt)}</div>`;
+  h += '</div></div>';
+  const s = osdSel && items.find(i => i.it === osdSel);
+  if (s) h += `<div class="note">Вибрано: <b>${esc(s.it)}</b> · X ${s.x}, Y ${s.y}. Перетягни пальцем або рухай кнопками.</div>
+               <div class="nudge"><button data-nud="-1,0">←</button><button data-nud="0,-1">↑</button><button data-nud="0,1">↓</button><button data-nud="1,0">→</button></div>`;
+  else h += '<div class="note">Перетягни елемент пальцем або натисни на нього, щоб рухати кнопками. Жовті елементи ще не збережені.</div>';
+  if (osdPend.size) h += `<div class="btnrow"><button data-oact="undo">Скасувати</button><button class="pri" data-oact="save">Зберегти позиції (${osdPend.size})</button></div>`;
+  h += card(`Екран ${n}`, chips(...[...params.keys()].filter(k => k.startsWith(`OSD${n}_`) && !/_(EN|X|Y)$/.test(k)).sort().map(k => pc(k, k.slice(5)))));
+  h += `<div class="card olist"><h4>Елементи екрана ${n}<span>${items.filter(i => i.en).length} / ${items.length}</span></h4>` + items.map(i => {
+    const m = metaOf(`OSD${n}_${i.it}_EN`), dn = !m ? '' : (m.n && !/_EN$/.test(m.n) ? m.n : (m.d || '').replace(/^Enables? (the )?display of /i, ''));
+    return `<div class="prow${osdSel === i.it ? ' sel' : ''}" data-it="${i.it}"><input type="checkbox" data-en="${i.it}"${i.en ? ' checked' : ''}><span class="nm">${esc(i.it)}<small>${esc(dn)}</small></span><span class="pos">${i.en ? `${i.x}, ${i.y}` : ''}</span></div>`;
+  }).join('') + '</div>';
+  h += card('Загальні налаштування OSD', chips(...[...params.keys()].filter(k => /^OSD_/.test(k)).sort().map(k => pc(k, k.slice(4)))));
+  el.innerHTML = h;
+  sizeOsdFont();
+}
+function sizeOsdFont(){
+  const g = $('#ogrid'); if (!g) return;
+  const cw = g.clientWidth / Number(g.dataset.w);
+  g.querySelectorAll('.oitem').forEach(e => e.style.fontSize = (cw * 1.6) + 'px');
+}
+window.addEventListener('resize', sizeOsdFont);
+function setOsdPos(it, x, y){
+  const n = osdScr, k = `${n}_${it}`;
+  if (x === Math.round(pv(`OSD${n}_${it}_X`)) && y === Math.round(pv(`OSD${n}_${it}_Y`))) osdPend.delete(k);
+  else osdPend.set(k, {n, it, x, y});
+}
+async function saveOsd(){
+  if (!fcOk()){ toast('Борт не на зв\'язку', 'err'); return; }
+  let ok = 0, tot = 0;
+  for (const [k, p] of [...osdPend]){
+    tot++;
+    const a = await writeParam(`OSD${p.n}_${p.it}_X`, p.x), b = await writeParam(`OSD${p.n}_${p.it}_Y`, p.y);
+    if (a !== null && b !== null){ ok++; osdPend.delete(k); changed.add(`OSD${p.n}_${p.it}_X`); changed.add(`OSD${p.n}_${p.it}_Y`); }
+  }
+  toast(`Збережено позицій: ${ok} з ${tot}`, ok === tot ? 'ok' : 'warn'); renderOsd();
+}
+$('#tab-osd').addEventListener('pointerdown', e => {
+  const it = e.target.closest('.oitem'); if (!it) return;
+  const g = $('#ogrid'), r = g.getBoundingClientRect(), W = Number(g.dataset.w), H = Number(g.dataset.h);
+  const cur = osdItems(osdScr).find(i => i.it === it.dataset.it); if (!cur) return;
+  const cw = r.width / W, chh = r.height / H;
+  osdDrag = {it: cur.it, el: it, r, W, H, cw, chh, ox: (e.clientX - r.left) / cw - cur.x, oy: (e.clientY - r.top) / chh - cur.y, x: cur.x, y: cur.y, x0: cur.x, y0: cur.y};
+  try { it.setPointerCapture(e.pointerId); } catch(_){}
+  e.preventDefault();
+  osdSel = cur.it; g.querySelectorAll('.oitem').forEach(o => o.classList.toggle('sel', o === it));
+});
+$('#tab-osd').addEventListener('pointermove', e => {
+  const d = osdDrag; if (!d) return;
+  d.x = Math.max(0, Math.min(d.W - 1, Math.round((e.clientX - d.r.left) / d.cw - d.ox)));
+  d.y = Math.max(0, Math.min(d.H - 1, Math.round((e.clientY - d.r.top) / d.chh - d.oy)));
+  d.el.style.left = d.x / d.W * 100 + '%'; d.el.style.top = d.y / d.H * 100 + '%';
+});
+const osdDrop = () => { const d = osdDrag; if (!d) return; osdDrag = null; if (d.x !== d.x0 || d.y !== d.y0) setOsdPos(d.it, d.x, d.y); renderOsd(); };
+$('#tab-osd').addEventListener('pointerup', osdDrop);
+$('#tab-osd').addEventListener('pointercancel', osdDrop);
+$('#tab-osd').addEventListener('click', async e => {
+  const sc = e.target.closest('[data-scr]'); if (sc){ osdScr = Number(sc.dataset.scr); osdSel = null; renderOsd(); return; }
+  const nd = e.target.closest('[data-nud]');
+  if (nd && osdSel){
+    const [dx, dy] = nd.dataset.nud.split(',').map(Number), i = osdItems(osdScr).find(i => i.it === osdSel);
+    if (i){ setOsdPos(osdSel, Math.max(0, i.x + dx), Math.max(0, i.y + dy)); renderOsd(); }
+    return;
+  }
+  const oa = e.target.closest('[data-oact]'); if (oa){ if (oa.dataset.oact === 'undo'){ osdPend.clear(); renderOsd(); } else await saveOsd(); return; }
+  const cb = e.target.closest('input[data-en]');
+  if (cb){
+    const name = `OSD${osdScr}_${cb.dataset.en}_EN`;
+    if (!fcOk()){ toast('Борт не на зв\'язку', 'err'); cb.checked = !cb.checked; return; }
+    const r = await writeParam(name, cb.checked ? 1 : 0);
+    if (r === null) toast('Немає підтвердження від ФК', 'err'); else changed.add(name);
+    renderOsd(); return;
+  }
+  const p = e.target.closest('[data-p]'); if (p && params.has(p.dataset.p)){ openEdit(p.dataset.p); return; }
+  const row = e.target.closest('.prow[data-it]'); if (row){ osdSel = osdSel === row.dataset.it ? null : row.dataset.it; renderOsd(); }
+});
 
 /* ================= HUD ================= */
 let hudDirty = true;
@@ -890,7 +1337,14 @@ function makeMock(deliver){
    ['INS_ACCOFFS_X',0.012,9],['INS_ACCOFFS_Y',-0.034,9],['INS_ACCOFFS_Z',0.09,9],['INS_GYRO_FILTER',20,4],['INS_ACCEL_FILTER',20,4],['INS_HNTCH_ENABLE',0,2],['LOG_BITMASK',176126,6],
    ['MOT_PWM_TYPE',6,2],['MOT_SPIN_ARM',0.1,9],['MOT_SPIN_MIN',0.15,9],['MOT_THST_HOVER',0.35,9],['MOT_BAT_VOLT_MAX',16.8,9],['MOT_BAT_VOLT_MIN',13.2,9],['OSD_TYPE',1,2],['RTL_ALT',1500,6],
    ['SERVO_BLH_AUTO',1,2],['SERVO_BLH_MASK',0,6],['SERVO_BLH_RVMASK',0,6],['SERVO_DSHOT_ESC',1,2],['SYSID_THISMAV',1,4],['VTX_ENABLE',1,2],['VTX_BAND',4,2],['VTX_CHANNEL',0,2],['VTX_FREQ',5658,4],['VTX_POWER',25,4],['VTX_MAX_POWER',800,4],['VTX_OPTIONS',0,2],
-   ['WPNAV_SPEED',1000,9],['STAT_RUNTIME',123456,6],['FORMAT_VERSION',120,4]].forEach(a => add(...a));
+   ['WPNAV_SPEED',1000,9],['STAT_RUNTIME',123456,6],['FORMAT_VERSION',120,4],
+   ['ESC_CALIBRATION',0,2],['MOT_PWM_MIN',1000,4],['MOT_PWM_MAX',2000,4],['MOT_SPIN_MAX',0.95,9],['RCMAP_ROLL',1,2],['RCMAP_PITCH',2,2],['RCMAP_THROTTLE',3,2],['RCMAP_YAW',4,2],
+   ['SIMPLE',0,2],['SUPER_SIMPLE',0,2],['OSD_TYPE',1,2],['OSD_CHAN',0,2],['OSD_UNITS',0,2],['OSD_OPTIONS',0,6],['OSD_FONT',0,2],['OSD_W_RSSI',30,2],['OSD_W_NSAT',9,2],['OSD_W_BATVOLT',14,9],['OSD_SW_METHOD',0,2]].forEach(a => add(...a));
+  for (let s = 1; s <= 4; s++){ add(`OSD${s}_ENABLE`, s === 1 ? 1 : 0, 2); add(`OSD${s}_CHAN_MIN`, 900, 4); add(`OSD${s}_CHAN_MAX`, 2100, 4); }
+  [['ALTITUDE',1,23,7],['BAT_VOLT',1,24,1],['RSSI',1,1,1],['CURRENT',1,24,2],['BATUSED',1,23,3],['SATS',1,1,3],['FLTMODE',1,2,8],['MESSAGE',1,2,13],
+   ['GSPEED',1,2,14],['HORIZON',1,10,7],['HOME',1,14,1],['HEADING',1,13,2],['THROTTLE',1,1,9],['COMPASS',1,10,3],['FLTIME',0,23,10],['VTX_PWR',0,1,5],
+   ['ARMING',0,12,10],['LINK_Q',0,1,2],['CLK',0,22,14],['AVGCELLV',0,24,4]].forEach(([it,en,x,y]) => { add(`OSD1_${it}_EN`,en,2); add(`OSD1_${it}_X`,x,2); add(`OSD1_${it}_Y`,y,2);
+     add(`OSD2_${it}_EN`,['BAT_VOLT','RSSI','FLTMODE'].includes(it)?1:0,2); add(`OSD2_${it}_X`,x,2); add(`OSD2_${it}_Y`,y,2); });
   for (let k = 1; k <= 8; k++){ add(`RC${k}_MIN`,1000,4); add(`RC${k}_MAX`,2000,4); add(`RC${k}_TRIM`,1500,4); add(`RC${k}_OPTION`,k===6?94:0,4); add(`RC${k}_REVERSED`,0,2); }
   for (let k = 1; k <= 8; k++){ add(`SERVO${k}_FUNCTION`,k<=4?32+k:0,4); add(`SERVO${k}_MIN`,1100,4); add(`SERVO${k}_MAX`,1900,4); add(`SERVO${k}_TRIM`,1500,4); add(`SERVO${k}_REVERSED`,0,2); }
   for (let k = 0; k <= 6; k++){ add(`SERIAL${k}_PROTOCOL`,[2,2,2,5,37,-1,23][k],2); add(`SERIAL${k}_BAUD`,[115,57,57,38,4,57,115][k],6); add(`SERIAL${k}_OPTIONS`,k===4?4:0,4); }
@@ -902,7 +1356,17 @@ function makeMock(deliver){
     if (id === 21) listQ = P.map((_, i) => i);
     else if (id === 20){ const i = d.getInt16(0,true); if (i >= 0 && i < P.length) pv(i); }
     else if (id === 23){ const nm = getStr(d,6,16), i = P.findIndex(p => p.n === nm); if (i >= 0){ let v = d.getFloat32(0,true); if (P[i].t < 9) v = Math.round(v); P[i].v = v; pv(i); } }
-    else if (id === 76 && d.getUint16(28,true) === 246) setTimeout(() => text(4, 'Rebooting (demo)'), 200);
+    else if (id === 76){
+      const cmd = d.getUint16(28,true), p1 = d.getFloat32(0,true), p5 = d.getFloat32(16,true);
+      const ack = (c, r) => { const [u,dd] = mk(3); dd.setUint16(0,c,true); u[2]=r; out(77,u); };
+      const pos = p => { const [u,dd] = mk(33); dd.setFloat32(0,p,true); dd.setUint16(28,42429,true); u[30]=255; u[31]=190; out(76,u); };
+      if (cmd === 246) setTimeout(() => text(4, 'Rebooting (demo)'), 200);
+      if (cmd === 241){ ack(241, 0);
+        if (p5 === 1){ text(6, 'Place vehicle level and press any key'); setTimeout(() => pos(1), 300); }
+        else setTimeout(() => text(6, p5 === 2 ? 'Trim OK (demo)' : 'Calibration successful (demo)'), 500); }
+      if (cmd === 42429){ const k = Math.round(p1); setTimeout(() => { if (k >= 6){ text(6, 'Calibration successful'); pos(16777215); } else { text(6, 'Place vehicle and press any key'); pos(k + 1); } }, 700); }
+      if (cmd === 209){ ack(209, 0); text(6, `Motor test ${Math.round(p1)} (demo)`); }
+    }
   });
   setInterval(() => { for (let k = 0; k < 25 && listQ.length; k++){ const i = listQ.shift(); if (Math.random() > 0.03) pv(i); } }, 40);
   setInterval(() => { const [u,d] = mk(9); d.setUint32(0,0,true); u[4]=2; u[5]=3; u[6]=81; u[7]=3; u[8]=3; out(0,u); }, 1000);
@@ -913,6 +1377,12 @@ function makeMock(deliver){
     if (tick % 2 === 0){ const [u,d] = mk(26); const n = () => (Math.random()-0.5)*40;
       d.setInt16(8, 1000*Math.sin(p)+n(), true); d.setInt16(10, -1000*Math.sin(r)*Math.cos(p)+n(), true); d.setInt16(12, -1000*Math.cos(r)*Math.cos(p)+n(), true);
       d.setInt16(14, 245*Math.cos(t*0.7)+n()/4, true); d.setInt16(16, 90*Math.cos(t*0.45)+n()/4, true); d.setInt16(18, 200+n()/4, true); out(27,u); }
+    if (tick % 2 === 1){
+      { const [u,d] = mk(42); const ch = [1500+400*Math.sin(t*0.9), 1500+350*Math.sin(t*0.6), 1100+400*(1+Math.sin(t*0.3)), 1500+300*Math.sin(t*1.1),
+          [1100,1300,1450,1550,1700,1900][Math.floor(t/3)%6], 1000, 1500, 1500];
+        ch.forEach((v,k) => d.setUint16(4+k*2, Math.round(v), true)); for (let k = 8; k < 18; k++) d.setUint16(4+k*2, 65535, true); u[40]=8; u[41]=200; out(65,u); }
+      { const [u,d] = mk(37); for (let k = 0; k < 4; k++) d.setUint16(4+k*2, Math.round(1150+60*Math.sin(t*2+k)), true); out(36,u); }
+    }
     if (tick % 5 === 0){
       { const [u,d] = mk(31); d.setUint16(14,16420+Math.round(Math.random()*30),true); d.setInt16(16,120,true); d.setInt8(30,87); out(1,u); }
       { const [u,d] = mk(20); d.setFloat32(4,0.3,true); d.setFloat32(8,2.4,true); d.setInt16(16,Math.round(y*D),true); out(74,u); }
@@ -927,7 +1397,10 @@ function makeMock(deliver){
 
 /* ================= Start ================= */
 let startTab = 'fly'; try { startTab = localStorage.getItem('tab') || 'fly'; } catch(e){}
-setTab(startTab === 'par' ? 'par' : 'fly');
+$('#verTop').textContent = 'v' + APP_VERSION;
+$('#verSplash').textContent = 'Версія ' + APP_VERSION;
+setTab(startTab);
+setInterval(liveSetup, 120);
 updateLoadBtn();
 updateUsbBtn();
 if (DEMO) mock = makeMock(f => feed(f)); else if (ESP_MODE) pump(); else initUsb();
